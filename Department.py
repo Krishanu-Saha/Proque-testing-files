@@ -1,0 +1,31 @@
+import re
+from playwright.sync_api import Page, expect
+
+
+def test_example(page: Page) -> None:
+    page.goto("https://stg.proquro.ai/")
+    page.get_by_role("link", name="Sign In").click()
+    page.get_by_role("link", name="Securely Login With Email").click()
+    page.locator("div").nth(2).click()
+    page.get_by_role("textbox", name="Email").click()
+    page.get_by_role("textbox", name="Email").fill("mobpark@yopmail.com")
+    page.locator("div").nth(2).click()
+    page.get_by_role("textbox", name="Password").click()
+    page.get_by_role("textbox", name="Password").fill("Avromandal12345@")
+    page.get_by_role("button", name="Log In").click()
+    page.get_by_role("button").first.click()
+    page.get_by_role("link", name="Department").click()
+    page.get_by_role("button", name="Add Department").click()
+    page.get_by_role("textbox", name="Department Name *").click()
+    page.get_by_role("textbox", name="Department Name *").fill("Data Analysis")
+    page.get_by_role("textbox", name="Description").click()
+    page.get_by_role("textbox", name="Description").fill("Data Analysis is done here")
+    page.get_by_role("button", name="Department Head Email").click()
+    page.get_by_role("textbox", name="Search by email or name...").click()
+    page.get_by_role("textbox", name="Search by email or name...").fill("kona")
+    page.get_by_role("listbox").get_by_text("konaw90924@gixpos.com").click()
+    page.get_by_role("button", name="Location", exact=True).click()
+    page.get_by_role("textbox", name="Search locations...").click()
+    page.get_by_role("textbox", name="Search locations...").fill("ipl")
+    page.get_by_text("IPL Technology - Bengaluru").click()
+    page.get_by_role("button", name="Create Department").click()
